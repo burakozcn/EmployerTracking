@@ -51,10 +51,13 @@ extension DetailViewController {
     let safeGuide = view.safeAreaLayoutGuide
     let readGuide = view.readableContentGuide
     
-    let nameLabel = label(text: "Name:     ")
-    let positionLabel = label(text: "Position:     ")
-    let educationLabel = label(text: "Education:   ")
-    let startDateLabel = label(text: "Start Date:  ")
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
+    let nameLabel = label(text: NSLocalizedString("name", comment: "Name:     "))
+    let positionLabel = label(text: NSLocalizedString("position", comment: "Position:       "))
+    let educationLabel = label(text: NSLocalizedString("education", comment: "Education:   "))
+    let startDateLabel = label(text: NSLocalizedString("startdate", comment: "Start Date:   "))
     
     view.addSubview(imageView)
     view.addSubview(nameLabel)
@@ -111,25 +114,25 @@ extension DetailViewController {
     startDateTextField.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.06).isActive = true
     startDateTextField.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor).isActive = true
     
-    editButton.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: 10).isActive = true
-    editButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -214).isActive = true
-    editButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: 80).isActive = true
-    editButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -180).isActive = true
+    editButton.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: height * 0.03).isActive = true
+    editButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -width * 0.55).isActive = true
+    editButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: width * 0.20).isActive = true
+    editButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -height * 0.2).isActive = true
     
-    deleteButton.topAnchor.constraint(equalTo: startDateTextField.bottomAnchor, constant: 10).isActive = true
-    deleteButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -80).isActive = true
-    deleteButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: 214).isActive = true
-    deleteButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -180).isActive = true
+    deleteButton.topAnchor.constraint(equalTo: startDateTextField.bottomAnchor, constant: height * 0.03).isActive = true
+    deleteButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -width * 0.20).isActive = true
+    deleteButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: width * 0.55).isActive = true
+    deleteButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -height * 0.2).isActive = true
     
-    okButton.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: 10).isActive = true
-    okButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -214).isActive = true
-    okButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: 80).isActive = true
-    okButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -180).isActive = true
+    okButton.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: height * 0.03).isActive = true
+    okButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -width * 0.55).isActive = true
+    okButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: width * 0.20).isActive = true
+    okButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -height * 0.2).isActive = true
     
-    cancelButton.topAnchor.constraint(equalTo: startDateTextField.bottomAnchor, constant: 10).isActive = true
-    cancelButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -80).isActive = true
-    cancelButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: 214).isActive = true
-    cancelButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -180).isActive = true
+    cancelButton.topAnchor.constraint(equalTo: startDateTextField.bottomAnchor, constant: height * 0.03).isActive = true
+    cancelButton.trailingAnchor.constraint(equalTo: readGuide.trailingAnchor, constant: -width * 0.20).isActive = true
+    cancelButton.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor, constant: width * 0.55).isActive = true
+    cancelButton.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -height * 0.2).isActive = true
   }
   
   func showAlert() {
@@ -139,7 +142,7 @@ extension DetailViewController {
     alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in
       self.viewModel.delete()
     }))
-    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
   }
   
   func deleteAlert(category: Categories) {
@@ -148,7 +151,7 @@ extension DetailViewController {
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
       self.viewModel.backtoCollection(category: category)
     }))
-    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
   }
   
   @objc func tapGesture(_ sender: UITapGestureRecognizer) {

@@ -65,12 +65,15 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
   let editButton: UIButton = {
     let button = UIButton()
     button.backgroundColor = .green
-    button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-    button.layer.cornerRadius = 0.5 * button.bounds.size.width
+    let width = UIScreen.main.bounds.width * 0.24
+    let height = UIScreen.main.bounds.height * 0.12
+    button.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    button.layer.cornerRadius = 0.4 * button.bounds.size.width
     button.layer.borderColor = UIColor.lightGray.cgColor
     button.layer.borderWidth = 0.9
     button.clipsToBounds = true
-    button.setTitle("Edit", for: .normal)
+    button.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+    button.titleLabel?.adjustsFontSizeToFitWidth = true
     button.titleLabel?.textColor = .white
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
@@ -79,12 +82,15 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
   let deleteButton: UIButton = {
     let button = UIButton()
     button.backgroundColor = .red
-    button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-    button.layer.cornerRadius = 0.5 * button.bounds.size.width
+    let width = UIScreen.main.bounds.width * 0.24
+    let height = UIScreen.main.bounds.height * 0.12
+    button.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    button.layer.cornerRadius = 0.4 * button.bounds.size.width
     button.layer.borderColor = UIColor.lightGray.cgColor
     button.layer.borderWidth = 0.9
     button.clipsToBounds = true
-    button.setTitle("Delete", for: .normal)
+    button.setTitle(NSLocalizedString("delete", comment: "Delete"), for: .normal)
+    button.titleLabel?.adjustsFontSizeToFitWidth = true
     button.titleLabel?.textColor = .white
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
@@ -93,12 +99,15 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
   let okButton: UIButton = {
     let button = UIButton()
     button.backgroundColor = .blue
-    button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+    let width = UIScreen.main.bounds.width * 0.25
+    let height = UIScreen.main.bounds.height * 0.2
+    button.frame = CGRect(x: 0, y: 0, width: width, height: height)
     button.layer.cornerRadius = 0.5 * button.bounds.size.width
     button.layer.borderColor = UIColor.lightGray.cgColor
     button.layer.borderWidth = 0.9
     button.clipsToBounds = true
-    button.setTitle("OK", for: .normal)
+    button.setTitle(NSLocalizedString("ok", comment: "OK"), for: .normal)
+    button.titleLabel?.adjustsFontSizeToFitWidth = true
     button.titleLabel?.textColor = .white
     button.translatesAutoresizingMaskIntoConstraints = false
     button.isHidden = true
@@ -108,12 +117,15 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
   let cancelButton: UIButton = {
     let button = UIButton()
     button.backgroundColor = .red
-    button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+    let width = UIScreen.main.bounds.width * 0.25
+    let height = UIScreen.main.bounds.height * 0.2
+    button.frame = CGRect(x: 0, y: 0, width: width, height: height)
     button.layer.cornerRadius = 0.5 * button.bounds.size.width
     button.layer.borderColor = UIColor.lightGray.cgColor
     button.layer.borderWidth = 0.9
     button.clipsToBounds = true
-    button.setTitle("Cancel", for: .normal)
+    button.setTitle(NSLocalizedString("cancel", comment: "Cancel"), for: .normal)
+    button.titleLabel?.adjustsFontSizeToFitWidth = true
     button.titleLabel?.textColor = .white
     button.translatesAutoresizingMaskIntoConstraints = false
     button.isHidden = true
@@ -129,7 +141,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     return toolBar
   }()
   
-  let leftBarButton = UIBarButtonItem(title: "< Employer", style: .plain, target: nil, action: nil)
+  let leftBarButton = UIBarButtonItem(title: NSLocalizedString("employerback", comment: "< Employer"), style: .plain, target: nil, action: nil)
   
   init(employer: Employers) {
     self.employer = employer
@@ -142,7 +154,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = .lightGray
     setupUI()
     setupToolBar()
     setFields()

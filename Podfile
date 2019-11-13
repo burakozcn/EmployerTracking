@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.1'
+platform :ios, '13.0'
 
 target 'EmployerTracking' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -9,6 +9,7 @@ target 'EmployerTracking' do
   pod 'RxSwift', '~> 4.0'
   pod 'RxCocoa', '~> 4.0'
   pod 'RxDataSources', '~> 3.0'
+  pod 'Realm'
   pod 'RealmSwift'
 end
 
@@ -18,5 +19,6 @@ target 'EmployerTrackingTests' do
   pod 'RxSwift', '~> 4.0'
   pod 'RxCocoa', '~> 4.0'
   pod 'RxDataSources', '~> 3.0'
+  pod 'Realm'
   pod 'RealmSwift'
 end

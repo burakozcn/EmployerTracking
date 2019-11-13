@@ -27,7 +27,7 @@ class CategoryViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .green
+    view.backgroundColor = .lightGray
     navigationItem.rightBarButtonItem = rightBarButton
     navigationItem.leftBarButtonItem = leftBarButton
 

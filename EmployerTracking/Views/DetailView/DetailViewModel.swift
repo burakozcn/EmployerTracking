@@ -69,7 +69,7 @@ class DetailViewModel {
   }
   
   func backtoCollection(category: Categories) {
-    navVC = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+    navVC = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
     coordinator = DetailCoordinator(rootViewController: navVC!, employers: employers)
     coordinator.backToCollection(category: category)
   }

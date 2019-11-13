@@ -5,7 +5,7 @@ class SideBarTableViewModel {
   weak var navVC: UINavigationController?
   
   func openSideDetail(_ name: String) {
-    navVC = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+    navVC = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
     coordinator = SideBarTableCoordinator(rootViewController: navVC!)
     coordinator.openDetail(name: name)
   }

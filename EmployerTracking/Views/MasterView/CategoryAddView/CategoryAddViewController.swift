@@ -10,7 +10,7 @@ class CategoryAddViewController: UIViewController {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.backgroundColor = .white
-    label.text = "Category Name:     "
+    label.text = NSLocalizedString("catName", comment: "Category Name:     ")
     return label
   }()
   
@@ -26,11 +26,11 @@ class CategoryAddViewController: UIViewController {
   let button: UIButton = {
     let button = UIButton(type: UIButton.ButtonType.system)
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Submit", for: .normal)
+    button.setTitle(NSLocalizedString("submit", comment: "Submit"), for: .normal)
     return button
   }()
   
-  let leftBarButtonItem = UIBarButtonItem(title: "< Category", style: .plain, target: nil, action: nil)
+  let leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("catback", comment: "< Category"), style: .plain, target: nil, action: nil)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -80,10 +80,10 @@ class CategoryAddViewController: UIViewController {
   
   func showAlert() {
     viewModel = CategoryAddViewModel()
-    let alert = UIAlertController(title: "Success", message: "Saved successfully.", preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in
+    let alert = UIAlertController(title: NSLocalizedString("success", comment: "Success"), message: NSLocalizedString("savesuccess", comment: "Saved successfully."), preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK"), style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in
       self.viewModel.backToCategory()
     }))
-    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
   }
 }

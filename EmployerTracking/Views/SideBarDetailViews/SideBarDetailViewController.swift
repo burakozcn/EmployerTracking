@@ -50,7 +50,7 @@ class SideBarDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .white
+    view.backgroundColor = .lightGray
     
     pickerView.delegate = self
     pickerView.dataSource = self
@@ -74,14 +74,14 @@ class SideBarDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
   }
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return pickers[row]
+    return NSLocalizedString(pickers[row].lowercased(), comment: pickers[row])
   }
   
   func aboutSetup() {
     let height = UIScreen.main.bounds.size.height
     let guide = view.safeAreaLayoutGuide
     
-    let titleLabel = label(text: "About Us", font: .boldSystemFont(ofSize: 24))
+    let titleLabel = label(text: NSLocalizedString("aboutus", comment: "About Us"), font: .boldSystemFont(ofSize: 24))
     
     view.addSubview(titleLabel)
     view.addSubview(textView)
@@ -98,7 +98,7 @@ class SideBarDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     let height = UIScreen.main.bounds.size.height
     let guide = view.safeAreaLayoutGuide
     
-    let settingLabel = label(text: "What to choose?", font: .boldSystemFont(ofSize: 23))
+    let settingLabel = label(text: NSLocalizedString("choose", comment: "What to choose?"), font: .boldSystemFont(ofSize: 23))
     
     view.addSubview(settingLabel)
     view.addSubview(pickerView)
@@ -116,11 +116,11 @@ class SideBarDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     let width = UIScreen.main.bounds.size.width
     let guide = view.safeAreaLayoutGuide
     
-    let companyLabel = label(text: "Your Company", font: .systemFont(ofSize: 20))
-    let complaintLabel = label(text: "Please tell your complaint", font: .systemFont(ofSize: 20))
+    let companyLabel = label(text: NSLocalizedString("company", comment: "Your Company"), font: .systemFont(ofSize: 20))
+    let complaintLabel = label(text: NSLocalizedString("complaint", comment: "Please tell your complaint"), font: .systemFont(ofSize: 20))
     
-    let companyTextField = textField(placeholder: "Your Company", isEnabled: true)
-    let complaintTextField = textField(placeholder: "Please feel free to contact us.", isEnabled: true)
+    let companyTextField = textField(placeholder: NSLocalizedString("company", comment: "Your Company"), isEnabled: true)
+    let complaintTextField = textField(placeholder: NSLocalizedString("contactholder", comment: "Please feel free to contact us."), isEnabled: true)
     
     view.addSubview(companyLabel)
     view.addSubview(companyTextField)

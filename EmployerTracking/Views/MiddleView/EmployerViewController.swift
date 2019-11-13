@@ -19,7 +19,7 @@ class EmployerViewController: UICollectionViewController {
     return layout
   }()
   
-  let leftBarButton = UIBarButtonItem(title: "< Category", style: .plain, target: nil, action: nil)
+  let leftBarButton = UIBarButtonItem(title: NSLocalizedString("catback", comment: "< Category"), style: .plain, target: nil, action: nil)
   let rightBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: nil, action: nil)
   
   let toolBar: UIToolbar = {

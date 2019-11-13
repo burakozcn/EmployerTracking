@@ -29,7 +29,7 @@ class CategoryAddViewModel {
   }
   
   func backToCategory() {
-    coordinator = CategoryAddCoordinator(rootViewController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController)
+    coordinator = CategoryAddCoordinator(rootViewController: UIApplication.shared.windows.first?.rootViewController as! UINavigationController)
     coordinator.openCategory()
   }
 }

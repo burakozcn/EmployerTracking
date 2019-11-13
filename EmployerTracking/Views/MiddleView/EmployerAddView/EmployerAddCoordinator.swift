@@ -26,7 +26,7 @@ class EmployerAddCoordinator: BaseCoordinator<Void> {
   
   @discardableResult
   func openEmployer() -> Observable<Void> {
-    let rootVC = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+    let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
     let employerCoordinator = EmployerCoordinator(rootViewController: rootVC, category: category)
     return coordinate(coordinator: employerCoordinator)
   }

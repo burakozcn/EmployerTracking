@@ -46,7 +46,7 @@ class CategoryListViewModel {
   }
   
   func addCat() {
-    window = UIApplication.shared.keyWindow
+    window = UIApplication.shared.windows.first
     navVC = window?.rootViewController as? UINavigationController
     coordinator = CategoryCoordinator(window: window!)
     coordinator.openCategory(on: navVC!)
@@ -74,7 +74,7 @@ class CategoryListViewModel {
   }
   
   func openDetail(_ index: Int, category: Categories) {
-    window = UIApplication.shared.keyWindow
+    window = UIApplication.shared.windows.first
     navVC = window?.rootViewController as? UINavigationController
     coordinator = CategoryCoordinator(window: window!)
     coordinator.openEmployer(on: navVC!, category: category)

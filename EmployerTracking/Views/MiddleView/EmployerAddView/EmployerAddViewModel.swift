@@ -67,7 +67,7 @@ class EmployerAddViewModel {
   }
   
   func backToEmployer() {
-    let rootVC = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+    let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
     coordinator = EmployerAddCoordinator(rootViewController: rootVC, category: category)
     coordinator.openEmployer()
   }

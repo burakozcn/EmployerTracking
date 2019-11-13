@@ -25,7 +25,7 @@ class DetailCoordinator: BaseCoordinator<Void> {
   
   @discardableResult
   func backToCollection(category: Categories) -> Observable<Void> {
-    let rootVC = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+    let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
     let employerCoordinator = EmployerCoordinator(rootViewController: rootVC, category: category)
     return coordinate(coordinator: employerCoordinator)
   }

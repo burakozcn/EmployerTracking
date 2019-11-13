@@ -24,7 +24,7 @@ class CategoryAddCoordinator: BaseCoordinator<Void> {
   
   @discardableResult
   func openCategory() -> Observable<Void> {
-    let window = UIApplication.shared.keyWindow
+    let window = UIApplication.shared.windows.first
     let categoryCoordinator = CategoryCoordinator(window: window!)
     return coordinate(coordinator: categoryCoordinator)
   }

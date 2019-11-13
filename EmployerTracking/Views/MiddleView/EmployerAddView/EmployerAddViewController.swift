@@ -73,13 +73,13 @@ class EmployerAddViewController: UIViewController, UIImagePickerControllerDelega
   let button: UIButton = {
     let button = UIButton(type: UIButton.ButtonType.system)
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Submit", for: .normal)
+    button.setTitle(NSLocalizedString("submit", comment: "Submit"), for: .normal)
     return button
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = .gray
     setupUI()
     showDatePicker()
     
@@ -103,12 +103,13 @@ class EmployerAddViewController: UIViewController, UIImagePickerControllerDelega
   func setupUI() {
     let readingGuide = view.readableContentGuide
     let safeGuide = view.safeAreaLayoutGuide
+    let width = UIScreen.main.bounds.width
     datePicker = UIDatePicker()
     
-    let nameLabel = label(text: "Employer Name:     ")
-    let positionLabel = label(text: "Position:       ")
-    let educationLabel = label(text: "Education:      ")
-    let startDateLabel = label(text: "Start Date:      ")
+    let nameLabel = label(text: NSLocalizedString("employer", comment: "Employer Name:     "))
+    let positionLabel = label(text: NSLocalizedString("position", comment: "Position:       "))
+    let educationLabel = label(text: NSLocalizedString("education", comment: "Education:      "))
+    let startDateLabel = label(text: NSLocalizedString("startdate", comment: "Start Date:   "))
     
     view.addSubview(nameLabel)
     view.addSubview(positionLabel)
@@ -147,7 +148,9 @@ class EmployerAddViewController: UIViewController, UIImagePickerControllerDelega
     startDateLabel.trailingAnchor.constraint(equalTo: startDateTextField.leadingAnchor).isActive = true
     
     startDateTextField.topAnchor.constraint(equalTo: educationTextField.bottomAnchor, constant: 15).isActive = true
+    startDateTextField.widthAnchor.constraint(equalTo: readingGuide.widthAnchor, multiplier: 0.55).isActive = true
     startDateTextField.leadingAnchor.constraint(equalTo: startDateLabel.trailingAnchor).isActive = true
+    startDateTextField.trailingAnchor.constraint(equalTo: readingGuide.trailingAnchor, constant: -width * 0.05).isActive = true
     
     button.centerXAnchor.constraint(equalTo: readingGuide.centerXAnchor).isActive = true
     button.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -167,9 +170,9 @@ class EmployerAddViewController: UIViewController, UIImagePickerControllerDelega
     
     let toolbar = UIToolbar()
     toolbar.sizeToFit()
-    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker))
+    let doneButton = UIBarButtonItem(title: NSLocalizedString("done", comment: "Done"), style: .plain, target: self, action: #selector(donedatePicker))
     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-    let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
+    let cancelButton = UIBarButtonItem(title: NSLocalizedString("cancel", comment: "Cancel"), style: .plain, target: self, action: #selector(cancelDatePicker))
     
     toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
     
@@ -191,11 +194,11 @@ class EmployerAddViewController: UIViewController, UIImagePickerControllerDelega
   
   func showAlert() {
     viewModel = EmployerAddViewModel(category: category)
-    let alert = UIAlertController(title: "Success", message: "Saved successfully.", preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in
+    let alert = UIAlertController(title: NSLocalizedString("success", comment: "Success"), message: NSLocalizedString("savesuccess", comment: "Saved successfully."), preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK"), style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in
       self.viewModel.backToEmployer()
     }))
-    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
   }
   
   @objc func tapGesture(_ sender: UITapGestureRecognizer) {

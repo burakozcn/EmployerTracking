@@ -50,21 +50,21 @@ class EmployerListViewModel {
   }
   
   func addEmployer() {
-    window = UIApplication.shared.keyWindow
+    window = UIApplication.shared.windows.first
     navVC = window?.rootViewController as? UINavigationController
     coordinator = EmployerCoordinator(rootViewController: navVC!, category: category)
     coordinator.openEmployer(on: navVC!)
   }
   
   func openDetail(_ index: Int, category: Categories, employers: Employers) {
-    window = UIApplication.shared.keyWindow
+    window = UIApplication.shared.windows.first
     navVC = window?.rootViewController as? UINavigationController
     coordinator = EmployerCoordinator(rootViewController: navVC!, category: category)
     coordinator.openDetail(on: navVC!, employers: employers)
   }
   
   func backToCategory() {
-    window = UIApplication.shared.keyWindow
+    window = UIApplication.shared.windows.first
     navVC = window?.rootViewController as? UINavigationController
     coordinator = EmployerCoordinator(rootViewController: navVC!, category: category)
     coordinator.openCategory(on: window)
